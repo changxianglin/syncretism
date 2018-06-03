@@ -7,16 +7,12 @@ router.use(function timeLog(req, res, next) {
     next();
 });
 // 定义网站主页的路由
-router.get('/', function(req, res, next) {
-    res.render('index')
+router.get('/', function(req, res) {
+    res.send('Birds home page');
 });
 // 定义 about 页面的路由
-router.get('/about', function(req, res, next) {
-    res.render('about');
+router.get('/about', function(req, res) {
+    res.send('About birds');
 });
 
-// 定义 login 页面的路由
-router.get('/login', function (req, res, next) {
-    res.render('login')
-})
 module.exports = router;
