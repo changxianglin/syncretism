@@ -137,6 +137,12 @@ app.del('/api/tour/:id', function (req, res) {
 //     res.send('500 - Server Error')
 // })
 
+app.get('/foo', function (req, res) {
+    res.render('foo', {layout: null})
+})
+
+
+
 app.use(function (req, res) {
     res.status(404).render("404")
 })
