@@ -9,6 +9,21 @@ app.set('view engine', 'handlebars')
 
 app.set('port', process.env.PORT || 5000)
 
+app.use(require('body-parser')())
+
+app.get('/newsletter', function( req, res){
+    //我们 会在 后面 学到 CSRF…… 目前, 只 提供 一个 虚拟 值
+    res. render('newsletter', {csrf: 'CSRF token goes here' });
+});
+
+app.post('/process', function(req, res){
+    console. log(' Form (from querystring): ' + req.req.query.form);
+    console. log(' CSRF token (from hidden form field): ' + req.body.csrf);
+    console. log(' Name (from visible form field): ' + req.body.name);
+    console. log(' Email (from visible form field): ' + req.body.email);
+    res.redirect( 303, '/thank- you');
+});
+
 
 // 测试页面
 app.use(function (req, res, next) {
