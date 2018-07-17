@@ -9,10 +9,10 @@ const jsonParser = bodyParser.json()
 const urlencodeParser = bodyParser.urlencoded({extends: false})
 
 mongoose.connect('mongodb://blog:miniblog1@ds133601.mlab.com:33601/createblog');
+const Cat = mongoose.model('Cat', { name: String, last: String});
+const kitty = new Cat({ name: 'Zildjian', last: "1"});
 
 app.get('/', (req, res) => {
-    const Cat = mongoose.model('Cat', { name: String });
-    const kitty = new Cat({ name: 'Zildjian' });
     kitty.save().then(() => console.log('meow'));
     res.send('link database')
 })
@@ -41,6 +41,31 @@ app.get('/post', urlencodeParser, (req, res) => {
     res.send('post' + JSON.stringify(req.query))
 })
 
+app.get('/list', (req, res) => {
+  let content = '查询'
+  Cat.find(function (err, kittys) {
+    if (err) return console.error(err);
+    console.log(kittys);
+  })
+  res.send(content)
+})
+
+app.get('/update', (req, res) => {
+  let content = 'update'
+  Cat.update({name: 'Zildjian'}, {last: '3'}, function(err, kittys) {
+    if(err) return console.error(err)
+    console.log(kittys)
+  })
+  res.send(content)
+})
+
+app.get('/remove', (req, res) => {
+  Cat.remove(function (err, kittys) {
+    if(err) return console.error(err)
+    console.log(kittys)
+  })
+  res.send('remove')
+})
 
 app.listen(7020, () => {
     console.log('app run port 7020')
