@@ -1,0 +1,20 @@
+const http = require('http')
+const url = require('url')
+
+start = (route) => {
+  onRequest = (request, response) => {
+    let pathname = url.parse(request.url).pathname
+    console.log('Request for ' + pathname + ' received.')
+
+    route(pathname)
+
+    response.writeHead(200, {'Content-type': 'text/plain'})
+    response.write('Hello World!')
+    response.end()
+  }
+
+  http.createServer(onRequest).listen(8888)
+  console.log('Server as started.')
+}
+
+exports.start = start
