@@ -9,8 +9,8 @@ let postHTML = `
               </head>
               <body>
               <form method = "post">
-              网站名: <input name = "name type = "text"><br>
-              网站 URL: <input name = "url" type = "text"><br>
+              网站名: <input name = "name"><br>
+              网站 URL: <input name = "url"><br>
               <input type = "submit">
               </form>
               </body>
