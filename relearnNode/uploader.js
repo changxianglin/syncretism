@@ -31,11 +31,13 @@ let upload = (req, res) => {
     form.uploadDir = './tmp/'
     form.parse(req, (err, fields, files) => {
       let oldname = files.upload.name
-      let newname = Date.now() + oldname.substr(oldname.lastIndexof('.'))
+      let newname = Date.now() + oldname.substr(oldname.lastIndexOf('.'))
       fs.renameSync(files.upload.path, './img/' + newname)
 
       res.writeHead(200, {'content-type': 'text/html'})
-      res.write('received upload: \n\n')
+
+      let s = '<p><a href = "/">back</a></p><img src = "/show?src=' + newname + '" /></p> '
+      res.write(s)
       res.end()
     })
     return

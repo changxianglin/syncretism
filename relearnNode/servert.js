@@ -2,6 +2,8 @@ const http = require('http')
 const url = require('url')
 const starter = require('./starter')
 const uploader = require('./uploader')
+const shower = require('./shower')
+const inter = require('./inter')
 
 http.createServer((req, res) => {
   let pathname = url.parse(req.url).pathname
@@ -9,7 +11,9 @@ http.createServer((req, res) => {
 
   let routeurl = {
     '/': starter.start,
-    '/show': uploader.upload
+    '/upload': uploader.upload,
+    '/show': shower.show,
+    '/inter': inter.init
   }
 
   if(typeof routeurl[pathname] === 'function') {
