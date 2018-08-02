@@ -1,0 +1,159 @@
+@media screen and (min-width:1201px) and (max-width:10000px) {
+  .main{
+  width: 1140px;
+  height: 50rem;
+  border-radius: 5px;
+  background: #eee;
+  margin: 0 auto;
+  }
+  body img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .main img {
+    width: 100%;
+  }
+  .child1 {
+    width: 15rem;
+    margin-left: 25rem;
+    margin-top: -50rem;
+  }
+  .child1 img {
+    width: 15rem;
+  }
+  .child2 {
+    width: 15rem;
+    margin-top: 10rem;
+  }
+  .child2 img {
+    width: 15rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .main{
+  width: 100%;
+  height: 50rem;
+  background: blue;
+  }
+  body img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+@media screen and (max-width: 960px) {
+  .main{
+  width: 100%;
+  height: 50rem;
+  background: red;
+  }
+  body img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+}
+@media screen and (max-width: 680px) {
+  .main{
+  position: relative;
+  width: 100%;
+  height: 34.25rem;
+  background: green;
+  }
+  body img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .child1 {
+    position: absolute;
+    width: 12rem;
+    height: 10rem;
+    margin-top: -30rem;
+    margin-left: 5rem;
+    animation: change 1s linear;
+  }
+  .child1 img {
+    width: 12rem;
+    height: 10rem;
+  }
+  .child2 {
+    position: absolute;
+    width: 12rem;
+    height: 10rem;
+    margin-top: -18rem;
+    margin-left: 18rem;
+    animation: change 1s linear;
+  }
+  .child2 img {
+    width: 12rem;
+    height: 10rem;
+  }
+  @keyframes change{
+      0% {width: 1rem;height: 0rem;opacity: 1;}
+      25%{width: 3rem;height: 2.5rem;opacity: 1;}
+      50%{width: 6rem;height: 5rem;opacity: 1;}
+      75%{width: 9rem;height: 7.5rem;opacity: 1;}
+      100% {width: 12rem;height: 10rem;opacity: 1;}
+  }
+  }
+@media screen and (max-width: 375px) {
+  .main{
+  width: 100%;
+  height: 30rem;
+  background: #a00;
+  }
+  body img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .child1 {
+    width: 10rem;
+    margin-left: 5rem;
+  }
+  .child1 img {
+    width: 10rem;
+  }
+  .child2 {
+    width: 10rem;
+    margin-left: 15rem;
+  }
+  .child2 img {
+    width: 10rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .main{
+  width: 100%;
+  height: 26.7rem;
+  background: #999;
+  }
+  body img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .child1 {
+    width: 8rem;
+    margin-top: -23rem;
+  }
+  .child1 img {
+    width: 8rem;
+  }
+  .child2 {
+    width: 8rem;
+    margin-left: 13rem;
+  }
+  .child2 img {
+    width: 8rem;
+  }
+}
