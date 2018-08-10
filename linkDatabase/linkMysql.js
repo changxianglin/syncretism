@@ -12,16 +12,16 @@ var connection = mysql.createConnection({
 connection.connect()
 
 
-var  sql = 'SELECT * FROM sapbd_mvt';
+var  sql = 'SELECT * FROM logic_wh_check';
 //查
 connection.query(sql,function (err, result) {
         if(err){
           console.log('[SELECT ERROR] - ',err.message);
           return;
         }
-        var content = result.valueOf()
-        console.log('///', end)
-      fs.writeFile('data.txt', content, (err) => {
+        var content = result
+        
+fs.writeFile('data.txt', content, (err) => {
         if(err) throw err
         console.log('获取成功')
       })
