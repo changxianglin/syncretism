@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>前台</title>
+    <style media="screen">
+      h3 {
+        text-align: center;
+      }
+      a {
+        padding: 5px;
+        border: 1px solid #F00;
+        border-radius: 5px;
+      }
+      a:hover {
+        cursor: pointer;
+      }
+      .show {
+        text-align: center;
+      }
+    </style>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <h3>
+      <a class="index">首页</a>
+    </h3>
+    <h3>
+      <a class="user">用户</a>
+    </h3>
+    <h3>
+      <a  class="topic">话题</a>
+    </h3>
+    <div class="show">
+
+    </div>
+
+    <script type="text/javascript">
+        var addE = function(element, url) {
+          $(element).click(function() {
+            $.ajax({
+              url: url,
+              method: 'GET',
+              success: function(res) {
+                console.log(res)
+                // console.log(JSON.stringify(res))
+                $('.show').text(JSON.stringify(res))
+              },
+              error: function(res) {
+                console.log(res)
+              }
+            })
+          })
+        }
+
+        addE('.index', 'http://localhost:3000/')
+        addE('.user', 'http://localhost:3000/user')
+        addE('.topic', 'http://localhost:3000/topic')
+    </script>
+  </body>
+</html>
