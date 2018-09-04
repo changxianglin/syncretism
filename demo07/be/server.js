@@ -27,6 +27,14 @@ app.get('/topic', function(req, res) {
   })
 })
 
+app.post('/userinfo', function(req, res) {
+  res.setHeader("Access-Control-Allow-Origin","*")
+  res.json({
+    title: '这是用户信息页',
+    content: '用户信息需要被记录下来方便下次直接登陆'
+  })
+})
+
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
