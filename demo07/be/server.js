@@ -1,4 +1,6 @@
 var express = require('express');
+var cookieParser = require('cookie-parser')
+var session = require('express-session')
 var app = express();
 
 app.get('/', function (req, res) {
@@ -33,6 +35,15 @@ app.post('/userinfo', function(req, res) {
     title: '这是用户信息页',
     content: '用户信息需要被记录下来方便下次直接登陆'
   })
+})
+
+app.post('/login', function (req, res, next) {
+    if(checkForCreatentials(req)) {
+      req.session.auth = true
+        res.redirect('/dashboard')
+    } else {
+      res.send(401)
+    }
 })
 
 var server = app.listen(3000, function () {
