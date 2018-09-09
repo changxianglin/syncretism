@@ -1,7 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const app = express()
 
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.post('/login', function (req, res) {
@@ -18,6 +20,7 @@ app.post('/login', function (req, res) {
 app.get('/testapi', function (req, res) {
       // console.log(req.body.user, req.body.password)
       res.header("Access-Control-Allow-Origin", "*");
+        console.log(req.cookies)
       res.json({
         result: 'success'
       })
@@ -25,10 +28,20 @@ app.get('/testapi', function (req, res) {
 
 app.post('/testpost', function(req, res) {
   res.header("Access-Control-Allow-Origin", "*");
+  console.log(req.cookies)
   res.json({
     result: 'post can ok'
   })
 })
+
+app.get('/testSetcookie', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.cookie('setCookie', 'zhangsan')
+    res.json({
+        result: 'set cookie ok'
+    })
+})
+
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

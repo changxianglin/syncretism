@@ -9,6 +9,7 @@
     <button @click = "login">登陆</button>
     <button @click = "test">登陆</button>
     <button @click = "testpost">test</button>
+    <button @click = 'cook'>getcookie</button>
   </div>
 </template>
 
@@ -52,6 +53,13 @@ export default {
     }).catch(err => {
     console.log(err)
     })
+    },
+    cook() {
+      axios.get('http://localhost:3000/testSetcookie').then(response => {
+        console.log(response.data)
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
