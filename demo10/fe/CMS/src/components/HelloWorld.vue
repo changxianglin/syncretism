@@ -57,6 +57,7 @@ export default {
     cook() {
       axios.get('http://localhost:3000/testSetcookie').then(response => {
         console.log(response.data)
+        console.log(response)
       }).catch(err => {
         console.log(err)
       })

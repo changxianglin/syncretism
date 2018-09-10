@@ -36,7 +36,12 @@ app.post('/testpost', function(req, res) {
 
 app.get('/testSetcookie', function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.cookie('setCookie', 'zhangsan')
+    const {setCookie}=req.cookies;
+    //如果没有用户的cookie字段，那么输出错误码
+    if(setCookie){
+        return res.json({code:1})
+    }
+    res.cookie('userName', 'zhangsan')
     res.json({
         result: 'set cookie ok'
     })
