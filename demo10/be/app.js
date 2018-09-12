@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const fs = require('fs')
+const path = require('path')
 const app = express()
 
 app.use(cookieParser())
@@ -45,6 +47,38 @@ app.get('/testSetcookie', function (req, res) {
     res.json({
         result: 'set cookie ok'
     })
+})
+
+
+app.get('/todo', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    fs.readFile('todo.txt', function (err, doc) {
+        if(err) throw err
+        res.json({
+            todo: doc.toString()
+        })
+    })
+})
+
+app.post('/todo', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    console.log(req.body)
+    if(req.body) {
+        let content = req.body.todo
+        console.log(content)
+        fs.appendFile('todo.txt', content + '/n', function (err) {
+            if(err) throw err
+            res.json({
+                code: 0,
+                result: 'ok'
+            })
+        })
+    } else {
+        res.json({
+            code: '1',
+            msg: 'should right write'
+        })
+    }
 })
 
 
