@@ -5,20 +5,21 @@ const app = express()
 
 app.use(cookieParser())
 
+const port = 5000
 var num = 0
 
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
 
     if(req.cookies.isVisit) {
         console.log(req.cookies, num++)
         res.send('欢迎再次光临')
     } else {
-        res.cookie('isVisit', 1, {maxAge: 60 * 1000})
+        res.cookie('isVisit', 1, {maxAge: 60 * 1000, httpOnly: true})
         res.send('欢迎初次光临')
     }
 })
 
 
-app.listen(5000, () => {
-    console.log('app running 5000 port')
+app.listen(port, () => {
+    console.log(`app running ${port} port`)
 })
