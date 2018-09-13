@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1= title
+    - var ary = items
+    each item in ary
+        div= item
