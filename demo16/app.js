@@ -44,6 +44,7 @@ app.get('/baidu', (req, res) => {
         });
         ress.on('end', () => {
             console.log('No more data in response.');
+            res.send(str)
         });
     });
 
@@ -55,7 +56,32 @@ app.get('/baidu', (req, res) => {
 //     req.write(postData);
     result.end();
     console.log('request to server back', str)
-    res.send(str)
+    // res.send(str)
+})
+
+app.get('/sina', (req, res) => {
+    var str = ''
+    let options = {
+        hostname:　'www.sina.com.cn',
+        port: 443,
+        path: '/',
+        method: 'get'
+    }
+    const result = https.request(options, (ress) => {
+        ress.on('data', (chunk) => {
+            str += chunk
+        })
+
+        ress.on('end', () => {
+            res.send(str)
+        })
+    })
+
+    result.on('error', (err) => {
+        console.log(err.message)
+    })
+
+    result.end()
 })
 
 app.listen(config.port, () => {
