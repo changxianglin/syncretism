@@ -20,18 +20,42 @@ app.get('/', (req, res) => {
 var str = ''
 
 var reqResult = function () {
+
     let result = https.request(option, (res) => {
         res.on('data', (data) => {
             str += data
             console.log(str += data)
         })
+
+        res.end()
     })
-    result.end()
+
 }
 
 app.get('/baidu', (req, res) => {
-    async reqResult()
-    await res.send(str)
+    var str = ''
+    const result = https.request(option, (ress) => {
+        // console.log(`STATUS: ${res.statusCode}`);
+        // console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+        // res.setEncoding('utf8');
+        ress.on('data', (chunk) => {
+            str += chunk
+            console.log(`BODY: ${chunk}`);
+        });
+        ress.on('end', () => {
+            console.log('No more data in response.');
+        });
+    });
+
+    // req.on('error', (e) => {
+    //     console.error(`problem with request: ${e.message}`);
+    // });
+
+// write data to request body
+//     req.write(postData);
+    result.end();
+    console.log('request to server back', str)
+    res.send(str)
 })
 
 app.listen(config.port, () => {
