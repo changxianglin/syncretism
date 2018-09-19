@@ -1,7 +1,7 @@
 #!/user/bin/env node
 
 var app = require('../app')
-var http = rquire('http')
+var http = require('http')
 console.log(app)
 
 http.createServer(app).listen(8080)
