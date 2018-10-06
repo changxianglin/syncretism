@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Web app lifecycle</title>
+    <style media="screen">
+      #first {
+        color: green;
+      }
+
+      #second {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+<ul id = "first">
+
+</ul>
+
+<script type="text/javascript">
+  function addMessage (element, message) {
+    var messageElement = document.createElement('li')
+    messageElement.textContent = message
+    element.appendChild(messageElement)
+  }
+
+  var first = document.getElementById('first')
+
+  addMessage(first, 'Page loading')
+</script>
+
+<ul id="second">
+
+</ul>
+
+<script type="text/javascript">
+document.body.addEventListener('mouseover', function() {
+  var second = document.getElementById('second')
+
+  addMessage(second, 'Event: mouseover')
+})
+
+document.body.addEventListener('click', function() {
+  var second = document.getElementById('second')
+
+  addMessage(second, 'Event: click')
+})
+</script>
+  </body>
+</html>
