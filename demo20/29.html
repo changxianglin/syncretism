@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="" id = "subTree">
+      <form class="" action="index.html" method="post">
+        <input type="text" name="" value="">
+      </form>
+      <p>Paragraph</p>
+      <span>Span</span>
+    </div>
+    <script type="text/javascript">
+      function traverseDOM(element, callback) {
+        callback(element)
+        element = element.firstElementChild
+        while (element) {
+          traverseDOM(element, callback)
+          element = element.nextElementSibling
+        }
+      }
+
+      const subTree = document.getElementById('subTree')
+      traverseDOM(subTree, function(element) {
+        console.log(element.nodeName)
+      })
+    </script>
+  </body>
+</html>

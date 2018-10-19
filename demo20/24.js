@@ -13,12 +13,12 @@ catch(e) {
 
 async(function*() {
 	try {
-		const ninjas = yield getJSON('ninjas.json")
+		const ninjas = yield getJSON("ninjas.json")
 		const missions = yield getJSON(ninjas[0].missionUrl)
 		const missionDescription = yeild getJSON(mission[0].missionUrl)
 	}
 	catch(e) {
-	
+
 	}
 }
 
